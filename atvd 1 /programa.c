@@ -1,48 +1,40 @@
-solicita o nome do cliente, idade, saldo disponivel, preço do produto e quantidade desejada:
+#include <stdio.h>
 
-	Situações:
-1- cliente idade e saldo
-2- cliente idade e !saldo
-3- cliente !idade e saldo
-4- cliente !idade e !saldo
+int main() {
+    char nome[50];
+    int idade, qtd;
+    float saldo, preco, total;
 
-gerar comprovante:
-(se o cliente conseguiu comprar o pronto, exibir o valor e quantidade do produto;
- se o cliente não conseguiu, mostar o motivo.)
+    printf("Nome do cliente: ");
+    scanf("%s", nome);
+    
+    printf("Idade: ");
+    scanf("%d", &idade);
+    
+    printf("Saldo disponivel: R$ ");
+    scanf("%f", &saldo);
+    
+    printf("Preco do produto: R$ ");
+    scanf("%f", &preco);
+    
+    printf("Quantidade desejada: ");
+    scanf("%d", &qtd);
 
-===================================================================================================
+    total = preco * qtd;
 
-variaveis:
-
-nomeCliente
-idadeCliente
-saldoDisponivel
-precoProduto
-quantidadeProduto
-
-principal:
-
-receber nomeCliente
-receber idadeCliente
-receber saldoDisponivel
-receber precoProduto
-receber quantidadeProduto
-
-
-se idadeCliente >= 18 e saldoDisponivel >= (precoProduto * quantidadeProduto):
-
-	escreva("Compra efetuada")
-
-
-se idadeCliente >= 18 e saldoDisponivel < (precoProduto * quantidadeProduto):
-	
-	escreva("Compra não efetuada: Cliente sem saldo sulficiente")
-
-
-se idadeCliente < 18 e saldoDisponivel >= (precoProduto * quantidadeProduto):
-
-	escreva("Compra não efetuada: Cliente menor de idade")
-
-se idadeCliente < 18 e saldoDisponivel < (precoProduto * quantidadeProduto):
-
-	escreva("Compra não efetuada: Cliente menor de idade e sem saldo sulficiente")
+    if (idade >= 18 && saldo >= total) {
+        printf("\n--- COMPRA EFETUADA ---\n");
+        printf("Cliente: %s\n", nome);
+        printf("Sucesso! Produto(s): %d | Valor Total: R$ %.2f\n", qtd, total);
+        
+    } else if (idade >= 18 && saldo < total) {
+        printf("\nErro: Compra nao efetuada - Cliente sem saldo suficiente\n");
+        
+    } else if (idade < 18 && saldo >= total) {
+        printf("\nErro: Compra nao efetuada - Cliente menor de idade\n");
+        
+    } else if (idade < 18 && saldo < total) {
+        printf("\nErro: Compra nao efetuada - Menor de idade e sem saldo\n");
+    }
+    return 0;
+}
