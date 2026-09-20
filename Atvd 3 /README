@@ -1,1 +1,30 @@
+*\ Início do Programa *\
 
+Função calc_media(soma, qtd): 
+    retornar soma / qtd
+
+Função ger_classif(media):
+    se media >= 9.5 retornar "A"
+    se media >= 8.0 retornar "B"
+    se media >= 7.0 retornar "C"
+    se media >= 6.0 retornar "D"
+    senão retornar "E"
+
+Função ger_aprov(classe):
+    se classe == "D" ou classe == "E" retornar "Não ap."
+    senão retornar "Aproveita"
+
+Variáveis: texto disc, classe, aprov; real soma = 0, nota; inteiro qtd
+
+ler disc, qtd
+
+para i de 1 até qtd:
+    ler nota
+    soma = soma + nota
+
+classe = ger_classif(calc_media(soma, qtd))
+aprov = ger_aprov(classe)
+
+mostrar disc, " | ", classe, " | ", aprov
+
+*\ Fim do Programa *\
